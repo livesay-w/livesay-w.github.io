@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Name · Projects</title>
+  <meta name="description" content="Selected physics and computing projects.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #EDF0F3;
+      --ink: #1B2330;
+      --muted: #5A6577;
+      --rule: #C9D0D9;
+      --spin-up: #2F5D8A;
+      --spin-down: #DCE3EA;
+      --link: #8A5A12;
+      --serif: "Spectral", Georgia, "Times New Roman", serif;
+      --sans: "Work Sans", "Segoe UI", system-ui, sans-serif;
+      color-scheme: light;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #141A22;
+        --ink: #E4E9EF;
+        --muted: #9AA6B6;
+        --rule: #2C3644;
+        --spin-up: #6E9CCB;
+        --spin-down: #1E2631;
+        --link: #E0B062;
+        color-scheme: dark;
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 1.0625rem;
+      line-height: 1.55;
+    }
+    a { color: var(--link); text-underline-offset: 0.18em; }
+    a:hover { text-decoration-thickness: 2px; }
+    a:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; border-radius: 2px; }
+
+    .wrap { max-width: 60rem; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Hero: name on the left, a live Ising lattice on the right */
+    header.hero {
+      display: grid;
+      grid-template-columns: 1fr minmax(12rem, 18rem);
+      gap: 3rem;
+      align-items: end;
+      padding: 5rem 0 3rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    h1 {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      line-height: 1.02;
+      letter-spacing: -0.015em;
+      margin: 0 0 1.25rem;
+    }
+    .intro {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      line-height: 1.6;
+      max-width: 34rem;
+      margin: 0 0 1.5rem;
+    }
+    .contact { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin: 0; padding: 0; list-style: none; font-weight: 500; }
+
+    figure.lattice { margin: 0; }
+    canvas {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1;
+      image-rendering: pixelated;
+      border-radius: 3px;
+    }
+    figcaption { font-size: 0.85rem; color: var(--muted); margin-top: 0.6rem; }
+
+    /* Projects */
+    main { padding: 3rem 0 4rem; }
+    h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-style: italic;
+      font-size: 1.5rem;
+      margin: 0 0 1.5rem;
+      color: var(--muted);
+    }
+    .project {
+      display: grid;
+      grid-template-columns: 14rem 1fr;
+      gap: 0.5rem 2.5rem;
+      padding: 2rem 0;
+      border-top: 1px solid var(--rule);
+    }
+    .project:first-of-type { border-top: 0; padding-top: 0.5rem; }
+    .project h3 {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 1.45rem;
+      line-height: 1.2;
+      margin: 0;
+    }
+    .project .meta { color: var(--muted); font-size: 0.9rem; margin: 0.4rem 0 0; }
+    .project p.desc { margin: 0 0 0.9rem; max-width: 38rem; }
+    .project .links { display: flex; gap: 1.25rem; margin: 0; padding: 0; list-style: none; font-weight: 500; }
+
+    footer { border-top: 1px solid var(--rule); padding: 1.5rem 0 2.5rem; color: var(--muted); font-size: 0.9rem; }
+
+    @media (max-width: 44rem) {
+      header.hero { grid-template-columns: 1fr; gap: 2rem; padding-top: 3rem; }
+      figure.lattice { max-width: 14rem; }
+      .project { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <header class="hero">
+      <div>
+        <!-- Replace with your name and a sentence about yourself -->
+        <h1>Your Name</h1>
+        <p class="intro">Physics student working on particle tracking, statistical mechanics and machine learning. A few things I’ve built are below.</p>
+        <ul class="contact">
+          <li><a href="https://github.com/livesay-w">GitHub</a></li>
+          <li><a href="mailto:you@example.com">Email</a></li>
+          <li><a href="cv.pdf">CV</a></li>
+        </ul>
+      </div>
+      <figure class="lattice">
+        <canvas id="ising" width="56" height="56" aria-label="Animated 2D Ising model near its critical temperature"></canvas>
+        <figcaption>2D Ising model, Metropolis updates at T ≈ T<sub>c</sub></figcaption>
+      </figure>
+    </header>
+
+    <main>
+      <h2>Selected projects</h2>
+
+      <!-- Project 1: edit title, description and links -->
+      <article class="project">
+        <div>
+          <h3>Ising model with Monte Carlo</h3>
+          <p class="meta">Python, NumPy</p>
+        </div>
+        <div>
+          <p class="desc">Simulated the 2D Ising model with the Metropolis algorithm and measured magnetization, energy and heat capacity across the phase transition.</p>
+          <ul class="links">
+            <li><a href="projects/ising.html">Read the notebook</a></li>
+            <li><a href="https://github.com/livesay-w/ising">Code</a></li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="project">
+        <div>
+          <h3>Galaxy Zoo classifier</h3>
+          <p class="meta">PyTorch, supervised learning</p>
+        </div>
+        <div>
+          <p class="desc">Trained a convolutional network to sort galaxy images by morphology, using labels from the Galaxy Zoo citizen-science project.</p>
+          <ul class="links">
+            <li><a href="projects/galaxyzoo.html">Read the notebook</a></li>
+            <li><a href="https://github.com/livesay-w/galaxyzoo">Code</a></li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="project">
+        <div>
+          <h3>Project three</h3>
+          <p class="meta">Tools used</p>
+        </div>
+        <div>
+          <p class="desc">One or two sentences on what the project does and what you found or built.</p>
+          <ul class="links">
+            <li><a href="projects/project3.html">Read more</a></li>
+            <li><a href="https://github.com/livesay-w/project3">Code</a></li>
+          </ul>
+        </div>
+      </article>
+    </main>
+
+    <footer>© 2026 Your Name</footer>
+  </div>
+
+  <script>
+    // Small 2D Ising model (periodic boundaries) rendered one pixel per spin.
+    (function () {
+      const canvas = document.getElementById("ising");
+      const ctx = canvas.getContext("2d");
+      const N = canvas.width;
+      const T = 2.27;                 // near the critical temperature
+      const spins = new Int8Array(N * N);
+      for (let i = 0; i < spins.length; i++) spins[i] = Math.random() < 0.5 ? 1 : -1;
+
+      const boltz = { 4: Math.exp(-4 / T), 8: Math.exp(-8 / T) };
+      function sweep() {
+        for (let k = 0; k < N * N; k++) {
+          const x = (Math.random() * N) | 0, y = (Math.random() * N) | 0;
+          const s = spins[y * N + x];
+          const nb = spins[y * N + (x + 1) % N] + spins[y * N + (x - 1 + N) % N]
+                   + spins[((y + 1) % N) * N + x] + spins[((y - 1 + N) % N) * N + x];
+          const dE = 2 * s * nb;
+          if (dE <= 0 || Math.random() < boltz[dE]) spins[y * N + x] = -s;
+        }
+      }
+
+      const img = ctx.createImageData(N, N);
+      function hex(v) { v = v.trim().replace("#", ""); return [0, 2, 4].map(i => parseInt(v.slice(i, i + 2), 16)); }
+      function draw() {
+        const css = getComputedStyle(document.documentElement);
+        const up = hex(css.getPropertyValue("--spin-up"));
+        const down = hex(css.getPropertyValue("--spin-down"));
+        for (let i = 0; i < spins.length; i++) {
+          const c = spins[i] > 0 ? up : down, j = i * 4;
+          img.data[j] = c[0]; img.data[j + 1] = c[1]; img.data[j + 2] = c[2]; img.data[j + 3] = 255;
+        }
+        ctx.putImageData(img, 0, 0);
+      }
+
+      const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (still) {
+        for (let i = 0; i < 300; i++) sweep();
+        draw();
+        return;
+      }
+      let last = 0;
+      function frame(t) {
+        if (t - last > 70) { sweep(); draw(); last = t; }
+        requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    })();
+  </script>
+</body>
+</html>
